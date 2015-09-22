@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "all_test.py", line 48, in <module>
+    db2file.updataFile()
+  File "D:\shell\test\SL_POS\src\SL_POS\public\db2file.py", line 47, in updataFile
+    conDatabase_case7()
+  File "D:\shell\test\SL_POS\src\SL_POS\public\db2file.py", line 240, in conDatabase_case7
+    con = cx_Oracle.connect(oracle_username,oracle_password,oracle_database)
+cx_Oracle.InterfaceError: Unable to acquire Oracle environment handle

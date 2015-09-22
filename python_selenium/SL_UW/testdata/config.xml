@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<info>
+	<explain>UM_login</explain>
+	<url_barcode>http://172.16.200.74:8080/sino_test/main.jsp?type=7</url_barcode>
+	<url>http://192.168.0.58/SL_UW/HOME</url>
+	<url_vscan>http://192.168.0.241:9080/SL_SCANMOCK </url_vscan>
+	<user username="linjie.yao" password="Sino1234">[INT2]契约系统(UW)</user>
+	<vuser username="linjie.yao" password="Sino1234">[INT2]模拟扫描（VSC）</vuser>
+	<data month="2015-06"></data>
+</info>
