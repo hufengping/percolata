@@ -17,4 +17,3 @@ if __name__ == '__main__':
                                            title='My unit test',
                                            description='This demonstrates the report output by HTMLTestRunner.'
                                            )
-    
