@@ -1,0 +1,6 @@
+123dev===%s=== curlRate: %s KBps  |  dataRate: %sKBps
+123svr===%s=== curlRate: %s KBps  |  dataRate: %sKBps
+456dev===%s=== curlRate: %s KBps  |  dataRate: %sKBps
+456svr===%s=== curlRate: %s KBps  |  dataRate: %sKBps
+789dev===%s=== curlRate: %s KBps  |  dataRate: %sKBps
+789svr===%s=== curlRate: %s KBps  |  dataRate: %sKBps
