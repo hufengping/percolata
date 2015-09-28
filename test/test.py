@@ -34,4 +34,3 @@ if __name__ == '__main__':
 	suite2 = unittest.TestLoader().loadTestsFromTestCase(TestFun)
 	allTests = unittest.TestSuite([suite1, suite2])
 	unittest.TextTestRunner(verbosity=2).run(allTests)
-	
