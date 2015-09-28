@@ -1,1 +1,0 @@
-/home/jolyon/bs-embedded-dev.qa/TestLibs/update_config.py
