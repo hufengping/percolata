@@ -5,6 +5,7 @@ Created on 30 Aug 2015
 @author: fengpinghu
 '''
 #coding=utf-8
+
 import unittest
 
 @unittest.skip("skip")
@@ -34,4 +35,3 @@ if __name__ == '__main__':
 	suite2 = unittest.TestLoader().loadTestsFromTestCase(TestFun)
 	allTests = unittest.TestSuite([suite1, suite2])
 	unittest.TextTestRunner(verbosity=2).run(allTests)
-	
