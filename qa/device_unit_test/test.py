@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import pexpect
+import time
 def timeout_handler(d):
     pass
 
