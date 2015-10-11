@@ -1,7 +1,6 @@
 import unittest
 from unit_test_exception import CpuLoadException
 import globals
-from globals import cpu_load_list
 
 
 class CpuLoadTestCase(unittest.TestCase):
