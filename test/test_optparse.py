@@ -1,5 +1,4 @@
 __author__ = 'fengpinghu'
-
 #!/usr/bin/env python
 
 from optparse import OptionParser

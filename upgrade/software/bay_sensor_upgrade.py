@@ -162,7 +162,7 @@ if __name__ == '__main__':
     apk_dir = "moto-fusion-sensor"
     # get update type
     parser = OptionParser()
-    parser.add_option("-t", "--type", help="Upgrade type, valid values are CI, office, local, others, test")
+    parser.add_option("-t", "--type", dest="type", help="Upgrade type, valid values are CI, office, local, others, test")
     (options, args) = parser.parse_args()
     upgrade_type = options.type
     if upgrade_type not in ['CI', 'office', 'local', 'others', 'test']:

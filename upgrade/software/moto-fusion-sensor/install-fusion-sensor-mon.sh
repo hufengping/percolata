@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 export PATH=/sbin:/system/sbin:/system/bin:/system/xbin
 sdcard=/sdcard
 if [ ! -d /data/local/bin ]; then
