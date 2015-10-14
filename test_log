@@ -1,0 +1,46 @@
+start test at 23_10-06-2015
+23:28:25_10-06-2015.in file:../test_main.py at line:206: ==[INFO]==start analyse config_file for test.
+
+23:28:25_10-06-2015.in file:../test_main.py at line:220: ==[INFO]==start analyse test_list_file for test.
+
+23:28:25_10-06-2015.in file:../test_main.py at line:243: ==[INFO]==start run /home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py
+23:28:37_10-06-2015.in file:../test_main.py at line:253: ==[ERROR]==run /home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py with failure=====>
+1
+0
+eof failure:23:28:37_10-06-2015.in file:/home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py at line:30
+Traceback (most recent call last):
+  File "/home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py", line 30, in <module>
+    wait_server(conf,ssh_vpn_proc,'vpn')
+  File "/home/fengpinghu/workspace/github/TestLibs/interact.py", line 54, in wait_server
+    eof_handler()
+  File "/home/fengpinghu/workspace/github/TestLibs/interact.py", line 31, in eof_handler
+    raise Exception('Unexpected End')
+Exception: Unexpected End
+
+23:29:06_10-06-2015.in file:../test_main.py at line:264: ==[INFO]==finish  /home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py.
+
+23:29:06_10-06-2015.in file:../test_main.py at line:270: ==[INFO]==finished test.
+
+start test at 23_10-06-2015
+23:30:01_10-06-2015.in file:../test_main.py at line:206: ==[INFO]==start analyse config_file for test.
+
+23:30:01_10-06-2015.in file:../test_main.py at line:220: ==[INFO]==start analyse test_list_file for test.
+
+23:30:01_10-06-2015.in file:../test_main.py at line:243: ==[INFO]==start run /home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py
+23:30:14_10-06-2015.in file:../test_main.py at line:253: ==[ERROR]==run /home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py with failure=====>
+1
+0
+eof failure:23:30:14_10-06-2015.in file:/home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py at line:30
+Traceback (most recent call last):
+  File "/home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py", line 30, in <module>
+    wait_server(conf,ssh_vpn_proc,'vpn')
+  File "/home/fengpinghu/workspace/github/TestLibs/interact.py", line 54, in wait_server
+    eof_handler()
+  File "/home/fengpinghu/workspace/github/TestLibs/interact.py", line 31, in eof_handler
+    raise Exception('Unexpected End')
+Exception: Unexpected End
+
+23:30:30_10-06-2015.in file:../test_main.py at line:264: ==[INFO]==finish  /home/fengpinghu/workspace/github/TestScripts/tc.upgrade.func.001/tc.upgrade.func.001.py.
+
+23:30:30_10-06-2015.in file:../test_main.py at line:270: ==[INFO]==finished test.
+
