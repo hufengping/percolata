@@ -1,9 +1,8 @@
 #coding=utf-8
 import unittest
-import HTMLTestRunner #引入HTMLTestRunner
+import HTMLTestRunner
 import time,os,sys
 from public import Autotest
-from public import db2file
 import ConfigParser
 
 #定义搜索testcase的方法，返回testsuite

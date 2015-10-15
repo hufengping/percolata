@@ -2,20 +2,18 @@
 '''
 @author: fengping.hu
 '''
-import time, os, smtplib, string, datetime
+import time, os, string, datetime
 from email.mime.text import MIMEText
-from email.header import Header
 from stat import *
 from os import listdir
 from os.path import isdir
-
-
+#email
 import smtplib
 from email.MIMEMultipart import MIMEMultipart
-from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
-from email import Encoders
 import configparser
+#mysql
+import MySQLdb as mdb
 
 
 # read credentials
@@ -26,7 +24,7 @@ cred.read(CREDENTIALS_FILE)
 GMAIL_USER = cred['GMAIL']['USER']
 GMAIL_PASSWD = cred['GMAIL']['PASSWD']
 
-#############################查找最新文件##########################    
+'''#############################Find the latest file##########################'''
 def newfile(result_dir):
     #定义文件目录
     #result_dir = 'D:\\Workspaces\\python\\TestLogin126\\log'
@@ -38,8 +36,8 @@ def newfile(result_dir):
     file = os.path.join(result_dir,lists[-1])
     #print file
     return file
-############################发送邮件##########################
-#获取当前时间戳
+'''############################send email##########################'''
+#get time
 def getTime(style = '%Y-%m-%d %H:%M:%S'):
     return time.strftime(style, time.localtime())
 
@@ -58,7 +56,7 @@ def mail(mail_to,subject, text):
 
     mailServer.close()
 
-###########################文件拷贝############################
+'''###########################file copy############################'''
 '''拷贝文件中修改日期为days天内的文件到指定目录'''
 def copynewfiles(source,target_dir,dayss=1):
     if isdir(source) != True:
