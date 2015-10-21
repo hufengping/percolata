@@ -2,7 +2,7 @@
 '''
 @author: fengping.hu
 '''
-import time, os, string, datetime
+import time, os, string, datetime,sys
 from email.mime.text import MIMEText
 from stat import *
 from os import listdir
@@ -12,47 +12,52 @@ import smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 import configparser
-#mysql
-import MySQLdb as mdb
 
+# cur_file_dir
+def cur_file_dir():
+    path = sys.path[0]
+    if os.path.isdir(path):
+         return path
+    elif os.path.isfile(path):
+         return os.path.dirname(path)
 
 # read credentials
-CREDENTIALS_FILE = '.credentials'
+CREDENTIALS_FILE =cur_file_dir() + '/.credentials'
+print sys.path[0]
 cred = configparser.ConfigParser()
 cred.read(CREDENTIALS_FILE)
-GMAIL_USER = cred['GMAIL']['USER']
-GMAIL_PASSWD = cred['GMAIL']['PASSWD']
 
-'''Find the latest file'''
 def newfile(result_dir):
-    #定义文件目录
-    #result_dir = 'D:\\Workspaces\\python\\TestLogin126\\log'
-    #获取目录下所有文件
-    lists=os.listdir(result_dir)
-    #重新按时间对目录下的文件进行排列
-    lists.sort(key=lambda fn: os.path.getmtime(result_dir+"\\"+fn))
-    print ('最新日志： '+lists[-1])
-    file = os.path.join(result_dir,lists[-1])
-    #print file
-    return file
-'''send email'''
-#get time
+    '''Find the latest file'''
+    # Get all the files in the directory
+    lists = os.listdir(result_dir)
+    # Re arrange the files in the directory by time.
+    lists.sort(key=lambda fn: os.path.getmtime(result_dir+"/"+fn))
+    print 'Latest log:'+lists[-1]
+    FILE = os.path.join(result_dir,lists[-1])
+    return FILE
+
+
+# get time
 def getTime(style = '%Y-%m-%d %H:%M:%S'):
     return time.strftime(style, time.localtime())
 def mail(mail_to,subject, text):
-    """embed tracking code and mail to all emails"""
-    mailServer =smtplib.SMTP("smtp.gmail.com", 587)
-    mailServer.starttls()
-    mailServer.ehlo()
-    mailServer.login(GMAIL_USER, GMAIL_PASSWD)
+    """send email"""
+    """embed tracking code and mail to all emails
+    :rtype : object
+    """
+    mailserver = smtplib.SMTP("smtp.gmail.com", 587)
+    mailserver.starttls()
+    mailserver.ehlo()
+    mailserver.login(cred.get('GMAIL','USER'), cred['GMAIL']['PASSWD'])
 
     msg = MIMEMultipart()
-    msg['From'] = GMAIL_USER
+    msg['From'] = cred.get('GMAIL','USER')
     msg['Subject'] = subject
     msg.attach(MIMEText(text, 'html'))
-    mailServer.sendmail(GMAIL_USER, mail_to, msg.as_string())
+    mailserver.sendmail(cred.get('GMAIL','USER'), mail_to, msg.as_string())
 
-    mailServer.close()
+    mailserver.close()
 
 '''file cop'''
 '''拷贝文件中修改日期为days天内的文件到指定目录'''
