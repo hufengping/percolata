@@ -1,14 +1,14 @@
 #!bin/bash
 
-sleep 10
+sleep 30
 
 am start com.percolata.wififix/com.percolata.wififix.MainActivity
 
-sleep 10
+sleep 180
 
 pm uninstall com.percolata.wififix
 
-sleep 10
+sleep 1800
 
 if [ -f "/data/misc/wifi/ipconfig.txt" ]
 then
@@ -16,4 +16,4 @@ then
 fi
 
 reboot
-rm -rf file
+rm -rf $0
