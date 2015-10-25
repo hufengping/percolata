@@ -15,4 +15,5 @@ then
   rm /data/misc/wifi/ipconfig.txt
 fi
 
+reboot
 rm -rf file
