@@ -148,7 +148,7 @@ class PDxIni:
                     self.f.writelines('%s=%s\n'%(KeyValue[0],KeyValue[1]['value']))#写入分段
        
 if __name__=='__main__':
-    ini = PDxIni(r'Z:\\test\\SL_POS\\testdata\\test.ini')   
+    ini = PDxIni(r'Z:\\test\\percolata\\testdata\\test.ini')
     ini.writeInteger('test2','java',788)
     ini.writeInteger('tesSL_Uava',444)
     print ini.readInteger('test2','frlphi',22 )
