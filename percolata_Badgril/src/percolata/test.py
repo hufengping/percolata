@@ -8,4 +8,4 @@ reportname = Autotest.newfile(xmlpath2 + 'log/')
 
 f = open(reportname)
 txt = f.read()
-Autotest.mail("fengping.hu@percolata.com", "Test Report", txt)
+Autotest.mail("fengping.hu@percolata.com", "Test Report", txt, reportname)

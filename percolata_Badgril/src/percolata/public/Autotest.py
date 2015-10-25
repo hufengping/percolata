@@ -9,7 +9,9 @@ from os.path import isdir
 #email
 import smtplib
 from email.mime.multipart import MIMEMultipart
+from email.mime.multipart import MIMEBase
 from email.mime.text import MIMEText
+import email
 import configparser
 
 # read credentials
@@ -32,8 +34,11 @@ def newfile(result_dir):
 # get time
 def getTime(style = '%Y-%m-%d %H:%M:%S'):
     return time.strftime(style, time.localtime())
-def mail(mail_to,subject, text):
+
+
+def mail(mail_to, subject, text, file):
     """send email"""
+
     mailserver = smtplib.SMTP("smtp.gmail.com", 587)
     mailserver.starttls()
     mailserver.ehlo()
@@ -42,8 +47,21 @@ def mail(mail_to,subject, text):
     msg = MIMEMultipart()
     text_msg = MIMEText(text, "html")
     msg.attach(text_msg)
+    contype = 'application/octet-stream'
+    maintype, subtype = contype.split('/', 1)
+    data = open(file, 'rb')
+    file_msg = MIMEBase(maintype, subtype)
+    file_msg.set_payload(data.read())
+    data.close()
+    email.Encoders.encode_base64(file_msg)
+    basename = os.path.basename(file)
+    file_msg.add_header('Content-Disposition', 'attachment', filename=basename)
+    msg.attach(file_msg)
+
+    msg['Date'] = email.Utils.formatdate()
     msg['From'] = "badgril@percolata.com"
     msg['Subject'] = subject
+
     mailserver.sendmail(cred.get('GMAIL', 'USER'), mail_to, msg.as_string())
     mailserver.close()
 
