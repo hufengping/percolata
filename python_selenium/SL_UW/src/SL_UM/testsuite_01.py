@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.common.action_chains import ActionChains
-import unittest, time, re,os,string
+import test_unittest, time, re,os,string
 from public import Autotest,db2file
 import xml.dom.minidom
 
@@ -21,7 +21,7 @@ root = dom.documentElement
 now = time.strftime("%Y-%m-%d_%H_%M_%S")
 tdata=  time.strftime("%Y-%m-%d")
 barcode = '1111020003808413'   #存储条形码
-class TestCase_01(unittest.TestCase):
+class TestCase_01(test_unittest.TestCase):
     u'''生产个险渠道条形码'''
 
     @classmethod
@@ -102,4 +102,4 @@ class TestCase_01(unittest.TestCase):
         
         
 if __name__ == "__main__":
-    unittest.main()
+    test_unittest.main()

@@ -6,7 +6,7 @@ import os
 import re
 import sys
 import time
-import unittest
+import test_unittest
 from optparse import OptionParser
 import pexpect
 
@@ -22,7 +22,7 @@ import globals
 
 def build_test_suit(start_time, end_time):
     # build test suite
-    suite = unittest.TestSuite()
+    suite = test_unittest.TestSuite()
     suite.addTest(cpu_load_test.CpuLoadTestCase("testCpuLoad"))
     suite.addTest(data_hole_test.DataHolekTestCase("testDataHole", start_time, end_time))
     suite.addTest(disk_remain.DiskRemainTestCase("testDiskRemain"))
@@ -220,7 +220,7 @@ if __name__ == "__main__":
             # implement test
             print("begin test log file: ", log_file)
             suite = build_test_suit(start_time, end_time)
-            runner = unittest.TextTestRunner()
+            runner = test_unittest.TextTestRunner()
             runner.run(suite)
 
             globals.test_result = globals.test_result.replace('\n', '<br/>')

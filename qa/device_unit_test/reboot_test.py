@@ -1,11 +1,11 @@
 
-import unittest
+import test_unittest
 import globals
 from globals import reboot_time_list
 from unit_test_exception import RebootException
 
 # test case class
-class RebootTestCase(unittest.TestCase):
+class RebootTestCase(test_unittest.TestCase):
     REBOOT_COUNT_THRESHOLD = 1
     
     def setUp(self):

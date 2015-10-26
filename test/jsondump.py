@@ -4,9 +4,7 @@ Created on 30 Aug 2015
 @author: fengpinghu
 
 '''
-import json,os,sys
-import unittest
-import test.HTMLTestRunner as HTMLTestRunner
+import test_unittest.HTMLTestRunner as HTMLTestRunner
 
 print "test"
 if __name__ == '__main__':

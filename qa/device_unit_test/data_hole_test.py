@@ -1,4 +1,4 @@
-import unittest
+import test_unittest
 import paramiko
 import sys
 import time
@@ -13,7 +13,7 @@ from globals import *
 
 
 # test case class
-class DataHolekTestCase(unittest.TestCase):
+class DataHolekTestCase(test_unittest.TestCase):
     delay_tolerrance = 1
 
     def __init__(self, name, start_time, end_time):

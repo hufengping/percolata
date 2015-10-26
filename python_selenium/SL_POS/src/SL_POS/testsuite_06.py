@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.common.action_chains import ActionChains
-import unittest, time, re,os,string
+import test_unittest, time, re,os,string
 from public import Autotest,db2file
 import xml.dom.minidom
 
@@ -23,7 +23,7 @@ case6file = open(db2file.case6datafile)
 #获取当前时间
 now = time.strftime("%Y-%m-%d_%H_%M_%S")
 tdata=  time.strftime("%Y-%m-%d")
-class TestCase_01(unittest.TestCase):
+class TestCase_01(test_unittest.TestCase):
     u'''犹豫期撤销'''
     
     #从数据文件获取保单号
@@ -298,4 +298,4 @@ class TestCase_01(unittest.TestCase):
         cls.driver.quit()
 
 if __name__ == "__main__":
-    unittest.main()
+    test_unittest.main()

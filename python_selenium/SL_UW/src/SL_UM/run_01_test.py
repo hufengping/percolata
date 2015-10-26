@@ -1,5 +1,5 @@
 #coding=utf-8
-import unittest
+import test_unittest
 import HTMLTestRunner #引入HTMLTestRunner
 import time,os,sys
 from public import Autotest
@@ -8,11 +8,11 @@ import ConfigParser
 
 #定义搜索testcase的方法，返回testsuite
 def creatsuite():
-    testunit = unittest.TestSuite()
+    testunit = test_unittest.TestSuite()
     #定义测试文件查找的目录
     test_dir= xmlpath
     #定义discover 方法的参数
-    discover=unittest.defaultTestLoader.discover(test_dir,
+    discover=test_unittest.defaultTestLoader.discover(test_dir,
                                                  pattern ='testsuite_01.py',
                                                  top_level_dir=None)
     #discover 方法筛选出来的用例，循环添加到测试套件中

@@ -1,9 +1,9 @@
-import unittest
+import test_unittest
 from unit_test_exception import CpuLoadException
 import globals
 
 
-class CpuLoadTestCase(unittest.TestCase):
+class CpuLoadTestCase(test_unittest.TestCase):
     """Test CPU Load"""
     
     # the max cpu load

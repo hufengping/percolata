@@ -24,5 +24,5 @@ if __name__ == '__main__':
 	dog.run()
 	cat = Cat()
 	cat.run()
-	print isinstance(dog,Dog)
+	print isinstance(dog, Dog)
 

@@ -1,4 +1,4 @@
-import unittest
+import test_unittest
 import json
 import os
 
@@ -6,7 +6,7 @@ from unit_test_exception import SoftwareUpdateException
 import globals
 
 
-class SoftwareUpdateTestCase(unittest.TestCase):
+class SoftwareUpdateTestCase(test_unittest.TestCase):
     """Test Software Update
     
     including fusion-sensor and FusionAdmin

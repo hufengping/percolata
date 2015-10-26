@@ -1,11 +1,11 @@
 
-import unittest
+import test_unittest
 import globals
 from globals import memory_used_list
 from unit_test_exception import MemoryLeakException
 
 # test case class
-class MemoryLeakTestCase(unittest.TestCase):
+class MemoryLeakTestCase(test_unittest.TestCase):
 
     MEMORY_USED_THRESHOLD = 410     # 80% of 512M memory
     MEMORY_USED_STEP = 10

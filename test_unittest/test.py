@@ -8,27 +8,41 @@ Created on 30 Aug 2015
 
 import unittest
 
-def addNum(a, b):
 
+def addNum(a, b):
 	return a+b
 
 def delNum(a, b):
-
 	return a-b
 
 class TestFun(unittest.TestCase):
+
+
+	@classmethod#run befor all testcases
+	def setUpClass(cls):
+		pass
+
 	def setUp(self):
 		print 'do before class....'
+
+	@unittest.skip("skip")
+	def test_Add(self):
+		print 'test add................'
+		self.assertEqual(1, addNum(1, 1))
+
+	#@unittest.skipif(conditition,reason)  if condititon is true skip this testcase
+	def test_Del(self):
+		print 'test del................'
+		self.assertEqual(0, delNum(1, 1))
+
 	def tearDown(self):
 		print 'do after class....'
 
-	def test_Add(self):
-		print 'test add................'
-		self.assertEqual(1,addNum(1,1))
 
-	def test_Del(self):
-		print 'test del................'
-		self.assertEqual(0,delNum(1,1))
+	@classmethod
+	def tearDownClass(cls):
+		pass
+
 
 if __name__ == '__main__':
 

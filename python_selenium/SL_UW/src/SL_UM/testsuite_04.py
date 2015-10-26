@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.common.action_chains import ActionChains
-import unittest, time, re,os,string
+import test_unittest, time, re,os,string
 from public import Autotest,db2file
 from testsuite_01 import *
 import xml.dom.minidom
@@ -28,7 +28,7 @@ yes_time = now_time + datetime.timedelta(days=-1)
 yes_time_nyr = yes_time.strftime("%Y-%m-%d")
 
 
-class TestCase_01(unittest.TestCase):
+class TestCase_01(test_unittest.TestCase):
     u'''录单任务'''
 
     @classmethod
@@ -152,4 +152,4 @@ class TestCase_01(unittest.TestCase):
         pass
 
 if __name__ == "__main__":
-    unittest.main()
+    test_unittest.main()

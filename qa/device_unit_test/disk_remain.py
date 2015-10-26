@@ -1,10 +1,10 @@
-import unittest
+import test_unittest
 import globals
 from globals import disk_remained_list
 from unit_test_exception import DataHoleException
 
 # test case class
-class DiskRemainTestCase(unittest.TestCase):
+class DiskRemainTestCase(test_unittest.TestCase):
     DISK_REMAIN_THRESHOLD = 128
     DISK_REMAIN_STEP = 10
         
