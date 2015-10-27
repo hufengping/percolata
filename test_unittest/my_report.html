@@ -189,8 +189,8 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>Percolata Test Report</h1>
-<p class='attribute'><strong>Start Time:</strong> 2015-10-25 22:09:54</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:00.000424</p>
+<p class='attribute'><strong>Start Time:</strong> 2015-10-28 00:00:13</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:00.000455</p>
 <p class='attribute'><strong>Status:</strong> Pass 1 Failure 1</p>
 
 <p class='description'>Fusion Sensor 2.0 TestCase-0210</p>
@@ -222,7 +222,7 @@ function showOutput(id, name) {
 </tr>
 
 <tr class='failClass'>
-    <td>TestCount</td>
+    <td>TestFun</td>
     <td>2</td>
     <td>1</td>
     <td>1</td>
@@ -230,22 +230,27 @@ function showOutput(id, name) {
     <td><a href="javascript:showClassDetail('c1',2)">Detail</a></td>
 </tr>
 
-<tr id='pt1.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_add: This will be the description of the TestCase--test_add.</div></td>
+<tr id='ft1.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_Add: This will be the description of the TestCase--test_Add.</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
-        pass</a>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        fail</a>
 
-    <div id='div_pt1.1' class="popup_window">
+    <div id='div_ft1.1' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.1: Test is OK !
+ft1.1: do before class....
+test add................
+Traceback (most recent call last):
+  File "/home/fengpinghu/workspace/github/test_unittest/8.py", line 23, in test_Add
+    self.assertEqual(1, addnum(1, 1),"stupid! 1+1=2")
+AssertionError: stupid! 1+1=2
 
 
         </pre>
@@ -255,25 +260,24 @@ pt1.1: Test is OK !
     </td>
 </tr>
 
-<tr id='ft1.2' class='none'>
-    <td class='failCase'><div class='testcase'>test_add2: This will be the description of the TestCase--test_add2.</div></td>
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Del: This will be the description of the TestCase--test_Del.</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
-        fail</a>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
 
-    <div id='div_ft1.2' class="popup_window">
+    <div id='div_pt1.2' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-ft1.2: Traceback (most recent call last):
-  File "/home/fengpinghu/workspace/github/test_unittest/test_count.py", line 24, in test_add2
-    self.assertEqual(self.add,2)
-AssertionError: 5 != 2
+pt1.2: do before class....
+test del................
+do after class....
 
 
         </pre>

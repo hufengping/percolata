@@ -1,24 +1,19 @@
 #!/usr/bin/env python
-'''
-Created on 30 Aug 2015
-
-@author: fengpinghu
-'''
-#coding=utf-8
-
+'''setUpClass,tearDownClass'''
 import unittest
 
 
-def addNum(a, b):
+def addnum(a, b):
 	return a+b
 
-def delNum(a, b):
+
+def delnum(a, b):
 	return a-b
+
 
 class TestFun(unittest.TestCase):
 
-
-	@classmethod#run befor all testcases
+	@classmethod #run befor all testcases
 	def setUpClass(cls):
 		pass
 
@@ -28,25 +23,23 @@ class TestFun(unittest.TestCase):
 	@unittest.skip("skip")
 	def test_Add(self):
 		print 'test add................'
-		self.assertEqual(1, addNum(1, 1))
+		self.assertEqual(2, addnum(1, 1))
 
-	#@unittest.skipif(conditition,reason)  if condititon is true skip this testcase
+	#@unittest.skipif(os.path.isfile("~/1.json")!=true,"can't find config")
 	def test_Del(self):
 		print 'test del................'
-		self.assertEqual(0, delNum(1, 1))
+		self.assertEqual(0, delnum(1, 1))
 
 	def tearDown(self):
 		print 'do after class....'
 
-
-	@classmethod
+	@classmethod #run after all testcases
 	def tearDownClass(cls):
 		pass
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
 	suite1 = unittest.TestLoader().loadTestsFromTestCase(TestFun)
 	suite2 = unittest.TestLoader().loadTestsFromTestCase(TestFun)
-	allTests = unittest.TestSuite([suite1, suite2])
-	unittest.TextTestRunner(verbosity=2).run(allTests)
+	allsuits = unittest.TestSuite([suite1, suite2])
+	unittest.TextTestRunner(verbosity=2).run(allsuits)
