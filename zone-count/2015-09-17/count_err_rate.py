@@ -125,7 +125,7 @@ class ErrorRateCounter:
 
 if __name__ == '__main__':
     placement_name = '8600125'
-    date_time = '2015-09-28'
+    date_time = '2015-10-23'
     if len(sys.argv) == 3:
         placement_name, date_time = sys.argv[1], sys.argv[2]
     t = ErrorRateCounter(placement_name, date_time)

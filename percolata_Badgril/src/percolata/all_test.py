@@ -17,7 +17,7 @@ def creatsuite():
 	discover = unittest.defaultTestLoader.discover(test_dir,
 												   pattern='test*.py',
 												   top_level_dir=None)
-	# add testcases to test suite
+    # add testcases to test suite
 	for test_suite in discover:
 		for test_cases in test_suite:
 			testunit.addTest(test_cases)
@@ -45,11 +45,14 @@ runner = HTMLTestRunner.HTMLTestRunner(
 	title=u'Percolata Test Repot',
 	description=u'Test case execution:')
 if __name__ == '__main__':
-	#need check test data for updates
+	# Check test data for updates
+	#db2file.updataFile()
 
 	alltestnames = creatsuite()
 	runner.run(alltestnames)
 	fp.close()
 	reportname = Autotest.newfile(xmlpath2 + 'log/')
-	Autotest.mail(mail_to, 'Auto test results', reportname)
-	#need copy files to jenkins log
+	f = open(reportname)
+	txt = f.read()
+	Autotest.mail(mail_to, 'Auto test results', txt, reportname)
+# copy files to jenkins log

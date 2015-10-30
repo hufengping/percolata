@@ -1,19 +1,24 @@
 #!bin/bash
 
-sleep 30
+sleep 10
 
+pm install wififix.apk                                           
+                                                                 
 am start com.percolata.wififix/com.percolata.wififix.MainActivity
+         
+sleep 180                         
 
-sleep 180
-
+am force-stop com.percolata.wififix 
+                                  
 pm uninstall com.percolata.wififix
-
-sleep 1800
-
+        
+sleep 10                                
+                                        
 if [ -f "/data/misc/wifi/ipconfig.txt" ]
-then
+then                             
   rm /data/misc/wifi/ipconfig.txt
-fi
+fi    
 
-reboot
-rm -rf $0
+rm -rf $0 
+        
+reboot   
