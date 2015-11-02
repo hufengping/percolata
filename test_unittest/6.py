@@ -25,7 +25,7 @@ class TestFun(unittest.TestCase):
 		print 'test add................'
 		self.assertEqual(2, addnum(1, 1))
 
-	#@unittest.skipif(os.path.isfile("~/1.json")!=true,"can't find config")
+	#@unittest.expectedFailure #if failure don't count this testcase
 	def test_Del(self):
 		print 'test del................'
 		self.assertEqual(0, delnum(1, 1))
