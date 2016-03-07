@@ -1,38 +1,27 @@
 #!/usr/bin/env python
 '''
-Created on 30 Aug 2015
-
 @author: fengpinghu
 '''
 #coding=utf-8
 
-import unittest
+from backend_common.storage import storage_manager
 
-def addNum(a, b):
+import sys,os
 
-	return a+b
 
-def delNum(a, b):
+args = sys.argv
+try:
+    bucket_name, fpath, save_path = args[1:]
+except Exception as e:
+    print "Usage: python download_dir.py <storage_type> <bucket_name> <fpath> <save_path>\n\neg. python download_dir.py percolata-data software/fixed/1.json software"
+    sys.exit()
 
-	return a-b
+save_path = os.path.expanduser(save_path)
+storage_type = 2
 
-class TestFun(unittest.TestCase):
-	def setUp(self):
-		print 'do before class....'
-	def tearDown(self):
-		print 'do after class....'
 
-	def test_Add(self):
-		print 'test add................'
-		self.assertEqual(1,addNum(1,1))
+storage_path = storage_manager.generate_storage_path(storage_type, bucket_name, fpath)
 
-	def test_Del(self):
-		print 'test del................'
-		self.assertEqual(0,delNum(1,1))
+storage_manager.download_to_local_path(storage_path, save_path)
 
-if __name__ == '__main__':
-
-	suite1 = unittest.TestLoader().loadTestsFromTestCase(TestFun)
-	suite2 = unittest.TestLoader().loadTestsFromTestCase(TestFun)
-	allTests = unittest.TestSuite([suite1, suite2])
-	unittest.TextTestRunner(verbosity=2).run(allTests)
+print "download %s to %s ok" % (fpath, save_path)
