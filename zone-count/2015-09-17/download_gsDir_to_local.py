@@ -4,7 +4,6 @@ google storage manger
 import os
 import sys
 import boto
-
 # from boto.gs.connection import GSConnection
 from boto.gs.key import Key
 

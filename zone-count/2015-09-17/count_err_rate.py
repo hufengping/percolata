@@ -30,7 +30,7 @@ class ErrorRateCounter:
 
         # configurate db, get id for this placement
         self.db_con, self.db_cur = (None, None)
-        mysql_conf = util.get_mysql_info()
+        mysql_conf = util.get_mysuhql_info()
         self.db_con = mdb.connect(
             host=mysql_conf['host'],
             user=mysql_conf['username'],

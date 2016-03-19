@@ -4,35 +4,30 @@ Created on 30 Aug 2015
 
 @author: fengpinghu
 '''
-#coding=utf-8
+# coding=utf-8
+import threading, time
 
-import unittest
+balance =0
+lock = threading.Lock()
 
-def addNum(a, b):
+def change_it(n):
+	global balance
+	balance = balance + n
+	balance = balance - n
 
-	return a+b
+def run_thread(n):
+	#global lock
+	for i in range(10000):
+		lock.acquire()
+		try:
+			change_it(n)
+		finally:
+			lock.release()
 
-def delNum(a, b):
-
-	return a-b
-
-class TestFun(unittest.TestCase):
-	def setUp(self):
-		print 'do before class....'
-	def tearDown(self):
-		print 'do after class....'
-
-	def test_Add(self):
-		print 'test add................'
-		self.assertEqual(1,addNum(1,1))
-
-	def test_Del(self):
-		print 'test del................'
-		self.assertEqual(0,delNum(1,1))
-
-if __name__ == '__main__':
-
-	suite1 = unittest.TestLoader().loadTestsFromTestCase(TestFun)
-	suite2 = unittest.TestLoader().loadTestsFromTestCase(TestFun)
-	allTests = unittest.TestSuite([suite1, suite2])
-	unittest.TextTestRunner(verbosity=2).run(allTests)
+t1 = threading.Thread(target=run_thread, args=(5,))
+t2 = threading.Thread(target=run_thread, args=(8,))
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+print balance
