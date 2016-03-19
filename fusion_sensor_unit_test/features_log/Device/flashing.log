@@ -1,0 +1,8 @@
+1.生成key文件做到脚本中，xianhao提供接口，无需手动通过devconf
+2.从googlestorage下载FusionSensor和FusionAdmin，等文件，xianhao需要提供接口：刷机脚本请求下载前，先请求MD5列表，接口需要先返回该列表。如果
+MD5不一致，更新本地文件。
+3.config文件通过脚本上传，不再通过devconf，需要xianhao提供接口（）
+4.Openvpn通过模拟点击操作，不需人工干预
+5.revertSSH 生成key自动上传到服务器
+
+

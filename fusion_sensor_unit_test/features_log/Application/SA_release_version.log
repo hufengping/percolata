@@ -1,0 +1,11 @@
+v1.3.3
+1.fix bug: SM-1002 When logout the SA app, 1/20 times pops up "Access Denied".  //closed
+2.fix bug: SM-1009 The style bugs from Shreya's feedback(attachment:PDF files). //closed
+3.fix bug: SM-1003 On the week view of SA app schedule page on ios, the first time to click the triangle of the end date of the week,the text is missing. //closed
+4.fix bug: SM-1004 When the day is 2015.12.2, the left top of the SA app should shows December on all tabs. //lower the priority,delay
+5.fix bug: SM-1006 On the SA app, the SA user should not repeat shift weekly.// lower the priority, delay
+6:to be add
+
+
+v1.3.2
+1. 新增基于地理位置的注册流程，利用FourSquare的API

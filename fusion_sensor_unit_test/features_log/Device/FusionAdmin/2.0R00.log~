@@ -1,0 +1,5 @@
+1.websocket  仅有reboot功能。
+在配置文件中要加上"fa-controluri":"ws://dp0.baysensors.com:9097"
+
+在dp0上 ～／websocket目录执行fa_command.py placementid 即可
+2.解决夸版本升级无法启动FusionSensor的问题，原因是包名变更。

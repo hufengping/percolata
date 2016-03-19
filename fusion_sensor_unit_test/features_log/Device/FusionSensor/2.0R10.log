@@ -1,0 +1,2 @@
+1.added people count in protobuffuer of every bounding box for zone-count mode（每个bondingbox中都加入count，后台要求）
+2.bug fixed: OI-22 (解决backup video 上传时间的问题)

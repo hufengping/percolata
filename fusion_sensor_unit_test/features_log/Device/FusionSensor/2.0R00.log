@@ -1,0 +1,53 @@
+video和picture数据采集统一使用OpenCV，数据采集更加稳定。
+各mode都有单独thread，不存在切换时序问题。减小切换mode时的风险。
+2.QR码修改配置文件。
+3. web socket
+4.FusionSensor检查FusionAdmin是否存在，不存在发个log. websocket中增加一个启动FusionAdmin
+4.new wificontrol
+6.Wi-Fibring
+
+7.zone-count在设备计算，不再上传image文件。
+Accesslist中的SSID按照顺序连接，先尝试优先级较高的SSID。
+9.FusionSensor从Googlestorage升级，使用新的API
+10.新增websocket调试功能，无需通过VPN
+
+6.hostname verifier all trusted 解决dp切换到API时出错的问题（证书）
+5.Audio 去除3gp文件，只保留数据文件
+
+
+
+commit log:
+delete first dirty data in binning file
+fix cannot create view bug
+fix cannot create view bug not use sleep and fix websocket bug
+FusionAdmin monitor and websocket remote command (bringupadmin) additiion
+shorten the length of QR code (handle fisheye)
+changed zone-count resolution; changed working hour check; added counting for videos in log
+wificontrolworker related issue updated
+audio updated with audio-enabled in Tracking mode
+Audio updates including audio-enabled in Tracking mode and the audioFileProducer improvement
+not add file to upload queue when parameter is not right
+upload retry policy(上传失败之后重新加入上传列表，尝试五次)
+HttpsURLConnection setDefaultHostnameVerifier and ExceptionWrapper added in GCEUtil（同步R92功能，解决切换hostname时出错问题）
+modify ssl socket connection timeout to download file（下载连接超时时间设置为20分钟，原为五分钟）
+fix fusionsensor cannot upgrade bug（util中的改动，修改fusionAdmin在两个升级配置不一致时无法升级的问题）
+data count and heartbeat log info updated（优化上传数据统计，删除其他线程里的count，上传一个统计一个）
+changed file uploading in tracking mode; edited zone-count learning rate (涉及背景抽取效率调整)
+add data_mode to parameters and fix bug FS-47 （修改上传文件参数不正确的bug）
+loi date_mode parameters added and arrayoutofbouds issue fixf  (上传文件参数修改)
+audio 3gp file deprecated（audio不再上传3gp文件
+clear up websocket and wifibinning config & clear up wifibinning dat and tbl & add ping to OSWrapper（websocket设置默认配置，Wi-Fi数据不上传zip包，add ping to OSWrapper改动暂时保留，没有用到）
+fix bug FS-52 in jira（）
+uploadworker updated and websocket shell-enabled remotely by websocket（websocket远程执行命令，但是没有返回信息。可以执行重启等操作，未测试）
+audio producer file update（同步1.1的功能，修改audio stop faild问题）
+create version control file when it does not exist（升级时候没有version control文件，就创建一个）
+FusionAdmin process monitor updates and  websocket am command adds （websocket中增加启FusionAdmin的命令，FusinoSensor10分钟检查一次FusionAdmin是否存在）
+timestamp of upload data issue fixed（获取时间戳的方法放到util中）
+fix create empty logdump file bug, should find root cause of this bug（util修复创建重复logdump的问题）
+audio updated with audio-enabled in Tracking mode（Tracking增加audio数据文件）
+changed zone-count resolution; changed working hour check; added counting for videos in log（同步到自己分支，无实际影响）
+fix fusionadmin running status judge error; fix cannot upload imagebackup bug(fusionadmin进程判断逻辑有误，imagebackup上传优先级为8，已经加上)
+－－－－－add re-post meta; fix upload folder name in google storage bug(文件上传但是Fileinfo中的消息未发送成功，记录到新目录mateinfo中，重新尝试)
+wifi connection followed the accesslist order(按照列表顺序连接SSID)
+edited code for avoiding conflict between generating and uploading files when walking the directories at the beginning(开机时FS扫描SDCARD下面几个目录，加文件到上传列表，如果这时正在产生数据，就会将未产生完的文件加到列表中，切没有参数，就会被删除。修改为：增加完列表之后才开始产生数据。
+capturemode=no 不产生count数据，但可以继续产生Wi-Fi数据。

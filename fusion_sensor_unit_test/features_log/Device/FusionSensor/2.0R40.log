@@ -1,0 +1,5 @@
+1.QR code 只有installmode时才开启QR功能，其他模式下读取配置，默认关闭。扫描QR之后联网先上传到devconf，再更新配置，网页生成QRcode也需要测试。
+2.bug fix OI-31 uploadworker上传过快时会出现divide by zero
+3.关闭POE thread（连接网线），改为读取配置，配置默认为关闭。
+4.OI-30 OI-28
+5.websocket asynchtask exception

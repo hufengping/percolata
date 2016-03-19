@@ -1,0 +1,22 @@
+1.修改升级配置，针对版本号升级。避免跨越太多版本，取消定时升级。（wl xm）
+2.增加websocket功能，替代VPN。demo升级(wl yf)
+3.P12文件（两个文件）放在apk资源文件中，安装之后释放到sdcard目录。(pa hfp)
+4.capturemode＝no,不收集count数据,可以收集Wi-Fi数据。(zc hfp)
+5.整理FusionSensor的资源文件，删除无用文件（主要是一些无用的脚本文件，无影响即可）。(pa hfp)
+6.重构wificontrol代码，需要全面回归。(yf pa)
+7.配置文件更新时校验MD5，发现配置文件乱码，拷贝fusion-admin.json to fusion-sensor.json(fp)
+
+
+
+removed 10 mins image backup and zone-count image upload; save zone-count image on device for 5 days
+add websocket with shell command
+edited code for specific software update
+add logcat in websocket for fusionsensor(not verify)
+added people count in protobuffuer of every bounding box for zone-count mode
+edited code for enable video backup configuration(video backup 不能正确获取的问题)
+fixed bug in tracking config and json config（修改配置文件）
+clean code in OSWrapper, deleted unused import
+clear up wifiworker sysmonworker&websocketworker
+wificontrol change from thread to timer(if wifi is connected we check the wifi status every 30 seconds and if not connected we keep trying connectiong) to reduce time cost
+audio fix（not verify）
+merge wifi and websocket from develop(commend line of websocket clean wifi code)

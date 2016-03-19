@@ -1,0 +1,13 @@
+V2.0.1
+1. fix bug: SM-1000 The Recommendation should be in a line on the Request page of the SM
+2. fix bug: SM-1001 when the position is empty and click the save button on the team page,there should be an notification //closed
+3. fix bug: SM-1005 The bugs from demo
+4. fix bug: SM-1007 Getting shift reminder notifications on Sunday even when not scheduled to work
+5. fix bug: SM-1008 For past dates, when actual sales are shown, the word "Estimate" should be replaced with "Actual"//closed
+6. tobe add
+
+
+V2.0.0
+1. Manager 新增自定义 sales role
+2. 新增 redo/undo 保存到数据库
+3. 新增调节availability后跳转到其他页面，更改的availability数据还存在，当publish后会保存到calendar上

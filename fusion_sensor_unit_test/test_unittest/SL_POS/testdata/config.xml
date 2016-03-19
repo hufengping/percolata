@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<info>
+	<explain>POS_login</explain>
+	<url>http://192.168.0.56/SL_POS/HOME</url>
+	<user username="junbo.ren" password="Sinolife2008">[INT2]保全系统(POS)</user>
+	<data month="2014-02"></data>
+</info>

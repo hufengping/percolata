@@ -1,0 +1,8 @@
+1.修改wificontrol,不再删除无法获取IP的热点。
+使device在没有fusionsensor时也能连接到网络
+2.revertSSH 添加
+
+
+commit：
+background anr issue fixed in Sysmonworker
+wificonnection modification merged from develop

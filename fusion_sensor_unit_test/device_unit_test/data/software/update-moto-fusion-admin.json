@@ -1,0 +1,73 @@
+{
+  "FusionSensor": {
+    "android": "yes",
+    "cleanInstall": "no",
+    "comPackage": "com.baysensors.FusionSensor",
+    "component": "FusionSensor",
+    "fileDestPath": "$sdcard",
+    "fileList": [
+      "FusionSensor.apk"
+    ],
+    "fileSrcPath": "moto-fusion-sensor",
+    "md5CheckSumList": [
+      "c8643524f36a33c6a30a1fead5daf481"
+    ],
+    "rebootAfterUpdated": "yes",
+    "updateCommand": "$default",
+    "version": "04-30-2015.v1.0.201504301650-Zhixins-MacBook-Air.local"
+  },
+  "example": {
+    "android": "yes-or-no-if-this-update-is-for-android-system",
+    "comPackage": "android-package-name",
+    "component": "android-component-name",
+    "fileDestPath": "folder-at-the-phone-sdcard",
+    "fileList": [
+      "list-of-files-to-download"
+    ],
+    "fileSrcPath": "forlder-at-the-server",
+    "rebootAfterUpdated": "yes-or-no-to-reboot-after-the-updates",
+    "updateCommand": "command-to-install-the-new-updates, $default: install, $script: run this shell script file",
+    "version": "package-version-number"
+  },
+  "fusion-sensor-mon": {
+    "android": "yes",
+    "cleanInstall": "yes",
+    "fileDestPath": "$sdcard",
+    "fileList": [
+      "apk-bringup.sh",
+      "fusion-sensor-mon.sh",
+      "userinit.sh",
+      "install-fusion-sensor-mon.sh"
+    ],
+    "fileSrcPath": "moto-fusion-sensor",
+    "md5CheckSumList": [
+      "9569af2975e58535525aeda7a7e77ffc",
+      "da7ed65ab454d1a6a92e3a4837ef0368",
+      "78f563192268f18944d07708584a39b8",
+      "38177dddeb6548d15e3f7cae0c00b0f2"
+    ],
+    "rebootAfterUpdated": "no",
+    "updateCommand": "sudo sh /sdcard/install-fusion-sensor-mon.sh",
+    "version": "11-25-2014.v1.12.CP"
+  },
+  "restore-vpn": {
+    "android": "yes",
+    "cleanInstall": "yes",
+    "fileDestPath": "$sdcard",
+    "fileList": [
+      "restore-vpn.sh"
+    ],
+    "fileSrcPath": "moto-fusion-sensor",
+    "md5CheckSumList": [
+      "db553168de3186394bf70711c901234f"
+    ],
+    "rebootAfterUpdated": "no",
+    "updateCommand": "sudo sh /sdcard/restore-vpn.sh",
+    "version": "01-14-2015.v2.00.CP"
+  },
+  "softwareList": [
+    "FusionSensor",
+    "restore-vpn",
+    "fusion-sensor-mon"
+  ]
+}

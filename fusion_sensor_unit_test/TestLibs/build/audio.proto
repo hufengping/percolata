@@ -1,0 +1,9 @@
+package com.baysensors.embedded.audio;
+
+message AudiodBValue {
+	required int32 dbValue = 1;
+	required string placementName = 2;
+	required sint64 startTimeStamp = 3;
+	required sint64 endTimeStamp = 4;
+}
+

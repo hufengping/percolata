@@ -1,0 +1,8 @@
+1.json库：fastjson   替换JSON库（线上很多报错）(yf)
+2.整理心跳和日志，（最好按json格式上传），方便graylog统计。（level）
+4.tracking优化(zc hfp)
+5.升级优化，按照版本升级，多个配置。(xm)
+6.清理event，exception等，阻止了心跳回传(fp)
+7.sshkey回传(yf)
+8.获取配置文件和升级文件时校验MD5(2.0R30 fp)
+8.QRcode 只有installmode 下才会打开

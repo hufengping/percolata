@@ -1,0 +1,9 @@
+2.0R20:
+FusionAdmin monitor and websocket remote command (bringupadmin) additiion
+fix create empty logdump file bug, should find root cause of this bug
+fix bug FS-52 in jira
+clear up websocket and wifibinning config & clear up wifibinning dat and tbl & add ping to OSWrapper
+(websocket增加默认配置项，wifibinning有没有配置都只上传压缩包)
+use function name replace Exception to locate bug quickly
+add google libs for new api
+add lib for new api
