@@ -4,30 +4,25 @@ Created on 30 Aug 2015
 
 @author: fengpinghu
 '''
-# coding=utf-8
-import threading, time
+import numpy as np
+import cv2
 
-balance =0
-lock = threading.Lock()
-
-def change_it(n):
-	global balance
-	balance = balance + n
-	balance = balance - n
-
-def run_thread(n):
-	#global lock
-	for i in range(10000):
-		lock.acquire()
-		try:
-			change_it(n)
-		finally:
-			lock.release()
-
-t1 = threading.Thread(target=run_thread, args=(5,))
-t2 = threading.Thread(target=run_thread, args=(8,))
-t1.start()
-t2.start()
-t1.join()
-t2.join()
-print balance
+cap = cv2.VideoCapture(0) 12
+# Define the codec and create VideoWriter object
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
+while(cap.isOpened()):
+	ret, frame = cap.read()
+	if ret==True:
+		frame = cv2.flip(frame,0)
+		# write the flipped frame
+		out.write(frame)
+		cv2.imshow('frame',frame)
+		if cv2.waitKey(1) & 0xFF == ord('q'):
+			break
+	else:
+		break
+# Release everything if job is finished
+cap.release()
+out.release()
+cv2.destroyAllWindows()
