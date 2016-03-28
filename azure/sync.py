@@ -3,6 +3,8 @@ import os
 import datetime
 import pyinotify
 import logging
+from upload_download import *
+import re
 
 
 class MyEventHandler(pyinotify.ProcessEvent):
@@ -25,6 +27,13 @@ class MyEventHandler(pyinotify.ProcessEvent):
     def process_IN_CLOSE_WRITE(self, event):
         print "CLOSE_WRITE event:", event.pathname
         logging.info("CLOSE_WRITE event : %s  %s" % (os.path.join(event.path,event.name),datetime.datetime.now()))
+        match = re.search(r'percolata-data', event.pathname)
+        if match:
+            bucket_name = "percolata-data"
+        else:
+            bucket_name = "percolata-test"
+
+        upload_file(bucket_name, "logdump")
 
     def process_IN_CREATE(self, event):
         print "CREATE event:", event.pathname
@@ -44,17 +53,16 @@ class MyEventHandler(pyinotify.ProcessEvent):
 
 
 def main():
+    #download_dir("percolata-test", "logdump", "/home/fengpinghu/temp")
     # watch manager
     wm = pyinotify.WatchManager()
-
-    wm.add_watch('/tmp', pyinotify.ALL_EVENTS, rec=True)
+    wm.add_watch('/home/fengpinghu/temp/logdump', pyinotify.ALL_EVENTS, rec=True)
     # event handler
     eh = MyEventHandler()
-
     # notifier
-
     notifier = pyinotify.Notifier(wm, eh)
     notifier.loop()
+
 
 if __name__ == '__main__':
     main()

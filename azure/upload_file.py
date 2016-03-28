@@ -18,7 +18,7 @@ storage_type = 1
 if os.path.exists(local_file):
     fp = open(local_file)
 else:
-    print "file not found: %s" %local_file
+    print "file not found: %s" % local_file
 
 storage_path = storage_manager.generate_storage_path(storage_type, bucket_name, directory)
 print storage_path
