@@ -4,14 +4,8 @@ Created on 30 Aug 2015
 @author: fengpinghu
 
 '''
-import test_unittest.HTMLTestRunner as HTMLTestRunner
-
-print "test"
-if __name__ == '__main__':
-    
-    fp = file('my_report.html', 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(
-                                           stream=fp,
-                                           title='My unit test',
-                                           description='This demonstrates the report output by HTMLTestRunner.'
-                                           )
+import json
+data1 = {'b':789,'c':456,'a':123}
+data2 = {'a':123,'b':789,'c':456}
+d1 = json.dumps(data1,sort_keys=True,indent=4)
+print d1
