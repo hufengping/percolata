@@ -1,0 +1,144 @@
+{
+  "ESLOICount": {
+    "0": {
+      "LOIHeightThresh": "1024",
+      "bgVarThreshold": "6.25",
+      "expectedPersonArea": "360.45910299999997",
+      "fTau": "0.5",
+      "kernelSize": "5",
+      "loiParam": [
+        "65",
+        "4",
+        "65",
+        "95",
+        "76",
+        "4",
+        "76",
+        "95"
+      ],
+      "minPersonArea": "100",
+      "unwarp": {
+        "distortF": "0.49",
+        "rectF": "0.42",
+        "resolutionFactor": "1.0",
+        "roiH": "0.515",
+        "roiW": "0.087",
+        "roiX": "0.405",
+        "roiY": "0.221",
+        "rotation": "3.0",
+        "useBilinear": "false",
+        "xcenteroffset": "0.0",
+        "ycenteroffset": "0.0"
+      },
+      "viewId": "0"
+    },
+    "1": {
+      "LOIHeightThresh": "1024",
+      "bgVarThreshold": "6.25",
+      "expectedPersonArea": "200",
+      "fTau": "0.5",
+      "kernelSize": "5",
+      "loiParam": [
+        "1",
+        "39",
+        "99",
+        "39",
+        "1",
+        "51",
+        "99",
+        "51"
+      ],
+      "minPersonArea": "70",
+      "unwarp": {
+        "distortF": "0.49",
+        "rectF": "0.42",
+        "resolutionFactor": "1.0",
+        "roiH": "0.11",
+        "roiW": "0.11",
+        "roiX": "0.5",
+        "roiY": "0.526",
+        "rotation": "3.0",
+        "useBilinear": "false",
+        "xcenteroffset": "0.0",
+        "ycenteroffset": "0.0"
+      },
+      "viewId": "1"
+    },
+    "loiList": [
+      "0",
+      "1"
+    ]
+  },
+  "FusionAdmin": {
+    "atTimeCommand": "",
+    "onBootCommand": "sh /sdcard/restore-vpn.sh",
+    "onRebootCommand": "",
+    "reboot": "5:45",
+    "softwareUpdate": {
+      "enable": "yes",
+      "getUpdateConfig": "update-fusion-admin.json",
+      "type": "production",
+      "updateURL": "https://phone:11222011@api.percolata.com"
+    }
+  },
+  "PlacementID": "8100061",
+  "WifiAccess": {
+    "1": {
+      "SSID": "Percolata",
+      "hiddenSSID": "no",
+      "key": "zip94303"
+    },
+    "2": {
+      "SSID": "SP-Wireless",
+      "hiddenSSID": "no",
+      "key": "sp22ps%1"
+    },
+    "3": {
+      "SSID": "Percolata",
+      "hiddenSSID": "no",
+      "key": "zip94303"
+    },
+    "4": {
+      "SSID": "FRiGATE2",
+      "hiddenSSID": "yes",
+      "key": "fastreta!l1ng"
+    },
+    "AccessList": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "more": {
+      "SSID": "Percolata",
+      "hiddenSSID": "no",
+      "key": "zip94303"
+    }
+  },
+  "audio": "true",
+  "capture-height": "320",
+  "capture-mode": "video",
+  "capture-width": "480",
+  "enableUpdate": "yes",
+  "enablewebsocketWorker": "true",
+  "exponential-backoff": "5",
+  "fa-controluri": "ws://dp0.baysensors.com:9097",
+  "fs-controluri": "ws://dp0.baysensors.com:9095",
+  "hostname": "https://phone:11222011@ci-api.percolata.com",
+  "imageDate": "null",
+  "installation-mode": "yes",
+  "picture-capture-period": "120",
+  "softwareUpdate": {
+    "enable": "yes",
+    "getUpdateConfig": "update-fusion-sensor.json",
+    "type": "production",
+    "updateURL": "https://phone:11222011@api.percolata.com"
+  },
+  "title": "fusion-sensor",
+  "uploadToAzure": "true",
+  "video-fps": "15",
+  "videoBackup": "false",
+  "videoDate": "null",
+  "wifi-sniff-enable": "false",
+  "workHours": "00:00-23:59"
+}

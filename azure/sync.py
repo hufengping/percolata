@@ -32,8 +32,9 @@ class MyEventHandler(pyinotify.ProcessEvent):
             bucket_name = "percolata-data"
         else:
             bucket_name = "percolata-test"
+        print event.path.split("/", 3)[3]
 
-        upload_file(bucket_name, "logdump")
+        upload_file(bucket_name, "logdump", event.pathname)
 
     def process_IN_CREATE(self, event):
         print "CREATE event:", event.pathname
@@ -56,7 +57,7 @@ def main():
     #download_dir("percolata-test", "logdump", "/home/fengpinghu/temp")
     # watch manager
     wm = pyinotify.WatchManager()
-    wm.add_watch('/home/fengpinghu/temp/logdump', pyinotify.ALL_EVENTS, rec=True)
+    wm.add_watch('/home/deployer/test', pyinotify.ALL_EVENTS, rec=True)
     # event handler
     eh = MyEventHandler()
     # notifier
