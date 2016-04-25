@@ -295,8 +295,8 @@ class VideoPreviewer(object):
 
         original_frame_size = Size(self._video_capture.get(cv.CV_CAP_PROP_FRAME_WIDTH),
                  self._video_capture.get(cv.CV_CAP_PROP_FRAME_HEIGHT))
-        print original_frame_size.height, original_frame_size.width
         frame_size = unwarper.rectified_size(original_frame_size);
+        print original_frame_size.height, original_frame_size.width
         print frame_size.height, frame_size.width
 
         new_unwarp_params = self._config;
@@ -306,24 +306,6 @@ class VideoPreviewer(object):
         right_x = (new_unwarp_params["roiX"] + new_unwarp_params["roiW"]) * frame_size.width
         bottom_y = new_unwarp_params["roiY"] * frame_size.height
         top_y = (new_unwarp_params["roiY"] + new_unwarp_params["roiH"]) * frame_size.height
-
-        frame_left_bottom = Point(left_x, bottom_y)
-        frame_right_bottom = Point(right_x, bottom_y)
-        frame_left_top = Point(left_x, top_y)
-        frame_right_top = Point(right_x, top_y)
-        green_line_top = Point(left_x, top_y)
-        green_line_bottom = Point(left_x, bottom_y)
-        red_line_top = Point(right_x, top_y)
-        red_line_bottom = Point(right_x, bottom_y)
-        if loiParam is not None:
-            green_line_top.x = frame_left_bottom.x + loiParam[0]
-            green_line_top.y = frame_left_bottom.y + loiParam[3]
-            green_line_bottom.x = frame_left_bottom.x + loiParam[0]
-            green_line_bottom.y = frame_left_bottom.y + loiParam[1]
-            red_line_top.x = frame_left_bottom.x + loiParam[4]
-            red_line_top.y = frame_left_bottom.y + loiParam[7]
-            red_line_bottom.x = frame_left_bottom.x + loiParam[4]
-            red_line_bottom.y = frame_left_bottom.y + loiParam[5]
 
         aspect_ratio = 0.75; # w/h
         logger.info("unwarped size: %d x %d\nunwarp config:%s\n" % (frame_size.width, frame_size.height, str(new_unwarp_params)))
@@ -358,18 +340,29 @@ class VideoPreviewer(object):
             elif c == 0x20:  # space, toggle freeze
                 freeze = False if freeze else True
             elif c == 13 or c == 10: # enter, confirm reference
+                new_unwarp_params["roiY"] = bottom_y / float(frame_size.height)
+                new_unwarp_params["roiH"] = (top_y - bottom_y) / float(frame_size.height)
+                new_unwarp_params["roiX"] = left_x / float(frame_size.height)
+                new_unwarp_params["roiW"] = (right_x - left_x) / float(frame_size.width)
+                print self._config
                 break
             elif c == 81 or c == 83:
-                offset = 1 if c == 83 else -1
+                offset = 3 if c == 83 else -3
+                left_x += offset
                 right_x += offset
-                if right_x > frame_size.width or right_x < 0:
+                if left_x < 0 or right_x > frame_size.width:
+                    left_x -= offset
                     right_x -= offset
-                else:
-                    red_line_top.x += offset
-                    red_line_bottom.x += offset
+            elif c == 82 or c == 84:
+                offset = 3 if c == 84 else -3
+                top_y += offset
+                bottom_y += offset
+                if bottom_y < 0 or top_y > frame_size.height:
+                    top_y -= offset
+                    bottom_y -= offset
             if not freeze:
                 original = self._video_capture.read()
-                if not original:
+                if not original or not original[0]:
                     # end of video, return to the beginning and keep going
                     self._video_capture.set(cv.CV_CAP_PROP_POS_FRAMES, 0)
                     continue # break loop if no more frame
@@ -386,11 +379,33 @@ class VideoPreviewer(object):
                 diff_sum = cv2.countNonZero(diff_frame[1])
                 percent_change = float(diff_sum) / float(gray_frame.size)
             else:
-                if not original:
-                    self._video_capture.set(cv.CV_CAP_PROP_POS_FRAMES, 0);
+                if not original or not original[0]:
                     break; # break loop if no more frame
                 else:
                     rectified_frame = unwarper.rectify_mat(original)
+
+            #if move_event.is_move and move_event.point.y > 0 and move_event.point.y < frame_size.height and move_event.point.x > 0 and move_event.point.x < frame_size.width:
+
+
+            frame_left_bottom = Point(left_x, bottom_y)
+            frame_right_bottom = Point(right_x, bottom_y)
+            frame_left_top = Point(left_x, top_y)
+            frame_right_top = Point(right_x, top_y)
+            green_line_top = Point(left_x, top_y)
+            green_line_bottom = Point(left_x, bottom_y)
+            red_line_top = Point(right_x, top_y)
+            red_line_bottom = Point(right_x, bottom_y)
+            if loiParam is not None:
+                roi_width = frame_right_bottom.x - frame_left_bottom.x
+                roi_height = frame_right_top.y - frame_right_bottom.y
+                green_line_top.x = frame_left_bottom.x + loiParam[0] * roi_width / 100
+                green_line_top.y = frame_left_bottom.y + loiParam[3] * roi_height / 100
+                green_line_bottom.x = frame_left_bottom.x + loiParam[0] * roi_width /100
+                green_line_bottom.y = frame_left_bottom.y + loiParam[1] * roi_height / 100
+                red_line_top.x = frame_left_bottom.x + loiParam[4] * roi_width / 100
+                red_line_top.y = frame_left_bottom.y + loiParam[7] * roi_height / 100
+                red_line_bottom.x = frame_left_bottom.x + loiParam[4] * roi_width / 100
+                red_line_bottom.y = frame_left_bottom.y + loiParam[5] * roi_height / 100
 
             cv2.line(rectified_frame,
                     frame_left_top.to_tuple(int),
@@ -406,10 +421,10 @@ class VideoPreviewer(object):
                     frame_left_top.to_tuple(int), (255,255,0), 2)
             cv2.line(rectified_frame,
                     red_line_top.to_tuple(int),
-                    red_line_bottom.to_tuple(int), (0,0,255), 6)
+                    red_line_bottom.to_tuple(int), (0,0,255), 1)
             cv2.line(rectified_frame,
                     green_line_top.to_tuple(int),
-                    green_line_bottom.to_tuple(int), (0,255,0), 6)
+                    green_line_bottom.to_tuple(int), (0,255,0), 1)
 
             text = 'w/h: %6.3f' % aspect_ratio
             cv2.putText(rectified_frame, text, (0, frame_size.height), cv.CV_FONT_HERSHEY_SIMPLEX, 1.0, (0,0,255), 1)
@@ -427,6 +442,9 @@ def main():
     import sys
     previewer = VideoPreviewer(sys.argv[1], sys.argv[2])
     confirm, config = previewer.preview()
+    if confirm:
+        with open(sys.argv[2], 'wb') as fout:
+            fout.write(json.dumps(config, indent=2))
 
 if __name__ == "__main__":
     main()

@@ -1,28 +1,25 @@
 #!/usr/bin/env python
-'''
-Created on 30 Aug 2015
+#coding=utf-8
 
-@author: fengpinghu
-'''
-import numpy as np
-import cv2
+from Tkinter import *
+import tkMessageBox
+class Application(Frame):
+    def __init__(self, master=None):
+        Frame.__init__(self, master)
+        self.pack()
+        self.createWidgets()
 
-cap = cv2.VideoCapture(0)
-# Define the codec and create VideoWriter object
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
-while(cap.isOpened()):
-	ret, frame = cap.read()
-	if ret==True:
-		frame = cv2.flip(frame,0)
-		# write the flipped frame
-		out.write(frame)
-		cv2.imshow('frame',frame)
-		if cv2.waitKey(1) & 0xFF == ord('q'):
-			break
-	else:
-		break
-# Release everything if job is finished
-cap.release()
-out.release()
-cv2.destroyAllWindows(
+    def createWidgets(self):
+        self.nameInput = Entry(self)
+        self.nameInput.pack()
+        self.alertButton = Button(self, text='Hello', command=self.hello)
+        self.alertButton.pack()
+
+    def hello(self):
+        name = self.nameInput.get() or 'world'
+        tkMessageBox.showinfo('Message', 'Hello, %s' % name)
+app = Application()
+# 设置窗口标题:
+app.master.title('Hello World')
+# 主消息循环:
+app.mainloop()
